@@ -1,14 +1,26 @@
-<template>default</template>
+<template>
+  <div class="content">
+    <Step :data="{ id: 1, title: 'your info' }" :isActive="true" />
+    <Step :data="{ id: 2, title: 'select plan' }" :isActive="false" />
+  </div>
+</template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue';
+import Step from './components/UI/Step.vue';
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld,
+    Step,
   },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.content {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  background: var(--color-cool-gray);
+}
+</style>
