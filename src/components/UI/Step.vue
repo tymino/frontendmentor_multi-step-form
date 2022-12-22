@@ -30,8 +30,8 @@ export default {
   display: flex;
   align-items: center;
   padding: 20px;
-
   background: var(--color-purplish-blue);
+  transition: all 0.8s ease;
 
   &__number {
     display: flex;
@@ -52,6 +52,7 @@ export default {
       background: var(--color-light-blue);
       border: 1px solid var(--color-opacity);
       color: var(--color-marine-blue);
+      transition: all 0.4s ease;
     }
   }
 

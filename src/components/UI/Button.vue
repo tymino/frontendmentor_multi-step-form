@@ -27,21 +27,34 @@ export default {
   font-weight: var(--font-medium);
   text-transform: capitalize;
 
+  transition: all 0.4s ease;
   cursor: pointer;
 
   &--primary {
     background: var(--color-marine-blue);
     color: var(--color-white);
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 
   &--confirm {
     background: var(--color-purplish-blue);
     color: var(--color-white);
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 
   &--link {
     background: none;
     color: var(--color-cool-gray);
+
+    &:hover {
+      color: var(--color-marine-blue);
+    }
   }
 }
 </style>
