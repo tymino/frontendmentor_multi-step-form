@@ -1,18 +1,19 @@
 <template>
   <div class="step">
-    <div class="step__number" :class="{ 'step__number--active': isActive }">
+    <div
+      class="step__number"
+      :class="{ 'step__number--active': data.isActive }"
+    >
       {{ data.id }}
     </div>
     <div class="step__wrapper">
-      <div class="step__subtitle">{{ getSubtitle }}</div>
+      <div class="step__subtitle">{{ data.subtitle }} {{ data.id }}</div>
       <div class="step__title">{{ data.title }}</div>
     </div>
   </div>
 </template>
 
 <script>
-import { computed } from 'vue';
-
 export default {
   name: 'ui-step',
   props: {
@@ -20,21 +21,6 @@ export default {
       type: Object,
       required: true,
     },
-    isActive: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-  },
-
-  setup(props) {
-    const langStr = 'step';
-
-    const getSubtitle = computed(() => `${langStr} ${props.data.id}`);
-
-    return {
-      getSubtitle,
-    };
   },
 };
 </script>

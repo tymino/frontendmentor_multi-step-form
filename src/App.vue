@@ -1,17 +1,28 @@
 <template>
   <div class="content">
-    <Step :data="{ id: 1, title: 'your info' }" :isActive="true" />
-    <Step :data="{ id: 2, title: 'select plan' }" :isActive="false" />
+    <Step v-for="step in steps" :key="step.id" :data="step" />
+    <button @click="setNextStep">click</button>
   </div>
 </template>
 
 <script>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 import Step from './components/UI/Step.vue';
 
 export default {
   name: 'App',
   components: {
     Step,
+  },
+  setup() {
+    const store = useStore();
+
+    return {
+      currentStep: computed(() => store.state.currentStep),
+      steps: computed(() => store.state.steps),
+      setNextStep: () => store.commit('setNextStep'),
+    };
   },
 };
 </script>
