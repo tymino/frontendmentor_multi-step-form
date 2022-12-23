@@ -9,34 +9,27 @@
       class="input__input"
       type="text"
       placeholder="test"
-      :value="message"
-      @input="updateMessage"
+      :value="data"
+      @input="this.$emit('update:data', $event.target.value)"
     />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
 export default {
   name: 'ui-input',
   props: {
-    // data: {
-    //   type: Object,
-    //   required: true,
-    // },
-  },
-  computed: {
-    ...mapState({
-      message: (state) => state.message,
-    }),
-  },
-  methods: {
-    updateMessage(e) {
-      console.log('message');
-      this.$store.commit('updateInput', e.target.value);
+    data: {
+      type: String,
+      required: true,
     },
   },
+  // methods: {
+  //   updateMessage(e) {
+  //     console.log('message');
+  //     this.$store.commit('updateInput', e.target.value);
+  //   },
+  // },
 };
 </script>
 

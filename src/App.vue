@@ -12,13 +12,13 @@
 
     <div class="content__inputs">
       <!-- <Input v-for="data in inputs" :key="data.id" :data="data" /> -->
-      <Input />
+      <Input :data="message" v-model:data="message" />
     </div>
   </div>
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 import Button from './components/UI/Button.vue';
 import Input from './components/UI/Input.vue';
@@ -34,20 +34,15 @@ export default {
   setup() {
     const store = useStore();
 
-    const msg = ref('');
-
-    const updateInput = (value) => {
-      console.log('updateInput');
-      msg.value = value;
-    };
-
     return {
       currentStep: computed(() => store.state.currentStep),
       steps: computed(() => store.state.steps),
       inputs: computed(() => store.state.inputs),
       setNextStep: () => store.commit('setNextStep'),
-      updateInput,
-      msg,
+      message: computed({
+        get: () => store.state.message,
+        set: (value) => store.commit('updateInput', value),
+      }),
     };
   },
 };
