@@ -11,8 +11,12 @@
     </div>
 
     <div class="content__inputs">
-      <!-- <Input v-for="data in inputs" :key="data.id" :data="data" /> -->
-      <Input :data="message" v-model:data="message" />
+      <Input
+        v-for="data in inputs"
+        :key="data.id"
+        :data="data"
+        v-model:data="inputs"
+      />
     </div>
   </div>
 </template>
@@ -37,11 +41,12 @@ export default {
     return {
       currentStep: computed(() => store.state.currentStep),
       steps: computed(() => store.state.steps),
-      inputs: computed(() => store.state.inputs),
       setNextStep: () => store.commit('setNextStep'),
-      message: computed({
-        get: () => store.state.message,
-        set: (value) => store.commit('updateInput', value),
+      inputs: computed({
+        get: () => store.state.inputs,
+        set: (inputData) => {
+          store.commit('updateInput', inputData);
+        },
       }),
     };
   },

@@ -51,9 +51,10 @@ const store = createStore({
         isActive: step.id === state.currentStep ? true : false,
       }));
     },
-    updateInput(state, value) {
-      console.log('vuex', value);
-      state.message = value;
+    updateInput(state, inputData) {
+      console.log('vuex', inputData);
+      const { inputName, value } = inputData;
+      state.inputs[inputName].value = value;
     },
   },
 });
