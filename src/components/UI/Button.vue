@@ -20,7 +20,7 @@ export default {
 .button {
   padding: 12px 22px;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
 
   font-family: var(--font-ubuntu);
   font-size: 1rem;

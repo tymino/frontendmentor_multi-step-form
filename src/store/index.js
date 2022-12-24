@@ -1,5 +1,6 @@
 import { createStore } from 'vuex';
 
+// rename setNextStep -> setCurrentStep
 const store = createStore({
   state: () => ({
     currentStep: 1,
@@ -32,7 +33,7 @@ const store = createStore({
         name: 'phone number',
         placeholder: 'e.g. +1 234 567 890',
         value: '',
-        error: true,
+        error: false,
         errorText: 'This field is required',
       },
     },

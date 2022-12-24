@@ -69,5 +69,11 @@ export default {
       margin: 10px;
     }
   }
+
+  &__inputs {
+    & > div {
+      margin-bottom: 20px;
+    }
+  }
 }
 </style>

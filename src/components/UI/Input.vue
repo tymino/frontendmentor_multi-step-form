@@ -1,14 +1,14 @@
 <template>
   <div class="input">
     <div class="input__describe">
-      <div class="input__name">te</div>
       <div class="input__name">{{ data.name }}</div>
       <div class="input__error" v-if="data.error">{{ data.errorText }}</div>
     </div>
     <input
       class="input__input"
+      :class="{ 'input__input--error': data.error }"
       type="text"
-      placeholder="test"
+      :placeholder="data.placeholder"
       :value="data.value"
       @input="updateInput"
     />
@@ -35,4 +35,42 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.input {
+  width: 100%;
+  max-width: 600px;
+
+  &__describe {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  &__name {
+    color: var(--color-marine-blue);
+    text-transform: capitalize;
+  }
+  &__error {
+    color: var(--color-strawberry-red);
+  }
+
+  &__input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-cool-gray);
+    border-radius: var(--border-radius);
+    color: var(--color-marine-blue);
+    font-size: 1rem;
+    font-family: var(--font-family);
+    font-weight: var(--font-bold);
+    outline: none;
+
+    &--error {
+      border: 1px solid var(--color-strawberry-red);
+    }
+
+    &:focus:not(.input__input--error) {
+      border: 1px solid var(--color-purplish-blue);
+    }
+  }
+}
+</style>
