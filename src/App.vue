@@ -4,7 +4,7 @@
       <Step v-for="step in steps" :key="step.id" :data="step" />
     </div>
 
-    <div class="content__buttons">
+    <!-- <div class="content__buttons">
       <Button @click="setNextStep">next step</Button>
       <Button btnType="confirm">confirm</Button>
       <Button btnType="link">go back</Button>
@@ -17,6 +17,9 @@
         :data="data"
         v-model:data="inputs"
       />
+    </div> -->
+    <div class="content__toggle">
+      <Toggle :data="toggle" v-model:data="toggle" />
     </div>
   </div>
 </template>
@@ -24,16 +27,18 @@
 <script>
 import { computed } from 'vue';
 import { useStore } from 'vuex';
-import Button from './components/UI/Button.vue';
-import Input from './components/UI/Input.vue';
+// import Button from './components/UI/Button.vue';
+// import Input from './components/UI/Input.vue';
 import Step from './components/UI/Step.vue';
+import Toggle from './components/UI/Toggle.vue';
 
 export default {
   name: 'App',
   components: {
-    Button,
-    Input,
+    // Button,
+    // Input,
     Step,
+    Toggle,
   },
   setup() {
     const store = useStore();
@@ -46,6 +51,12 @@ export default {
         get: () => store.state.inputs,
         set: (inputData) => {
           store.commit('updateInput', inputData);
+        },
+      }),
+      toggle: computed({
+        get: () => store.state.toggle.isChecked,
+        set: (value) => {
+          store.commit('updateToggle', value);
         },
       }),
     };
@@ -74,6 +85,10 @@ export default {
     & > div {
       margin-bottom: 20px;
     }
+  }
+
+  &__toggle {
+    background: red;
   }
 }
 </style>

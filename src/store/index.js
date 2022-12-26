@@ -10,13 +10,16 @@ const store = createStore({
       { id: 3, subtitle: 'step', title: 'add-ons', isActive: false },
       { id: 4, subtitle: 'step', title: 'summary', isActive: false },
     ],
-    message: '',
     inputs: {
       name: {
         id: 0,
         name: 'name',
         placeholder: 'e.g. Stephen King',
         value: '',
+        validate: (state) => {
+          const regex = new RegExp(`^[a-z]+\\s{1}[a-z]+$`, 'i');
+          return regex.test(state);
+        },
         error: false,
         errorText: 'This field is required',
       },
@@ -25,6 +28,10 @@ const store = createStore({
         name: 'email address',
         placeholder: 'e.g. stephenking@lorem.com',
         value: '',
+        validate: (state) => {
+          const regex = new RegExp(`^\\w+@\\w+.\\w{2,5}$`);
+          return regex.test(state);
+        },
         error: false,
         errorText: 'This field is required',
       },
@@ -36,6 +43,11 @@ const store = createStore({
         error: false,
         errorText: 'This field is required',
       },
+    },
+    toggle: {
+      titleLeft: 'monthly',
+      titleRight: 'yearly',
+      isChecked: false,
     },
   }),
   getters: {},
@@ -53,9 +65,18 @@ const store = createStore({
       }));
     },
     updateInput(state, inputData) {
-      console.log('vuex', inputData);
       const { inputName, value } = inputData;
+
+      console.log(
+        'vuex:updateInput',
+        state.inputs[inputName].validate(value),
+        value
+      );
+
       state.inputs[inputName].value = value;
+    },
+    updateToggle(state) {
+      state.toggle.isChecked = !state.toggle.isChecked;
     },
   },
 });
