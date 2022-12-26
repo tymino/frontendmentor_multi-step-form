@@ -54,7 +54,7 @@ export default {
         },
       }),
       toggle: computed({
-        get: () => store.state.toggle.isChecked,
+        get: () => store.state.toggle,
         set: (value) => {
           store.commit('updateToggle', value);
         },
@@ -88,7 +88,7 @@ export default {
   }
 
   &__toggle {
-    background: red;
+    margin-top: 20px;
   }
 }
 </style>

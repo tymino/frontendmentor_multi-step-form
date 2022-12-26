@@ -1,13 +1,27 @@
 <template>
   <div class="container">
-    <div class="container__title-left">{{ data.titleLeft }}</div>
+    <div
+      class="container__title"
+      :class="{
+        'container__title--active': !data.isChecked,
+      }"
+    >
+      {{ data.titleLeft }}
+    </div>
     <div class="container__toggle toggle">
       <label class="toggle">
         <input type="checkbox" :value="data.isChecked" @input="updateToggle" />
         <span class="slider round"></span>
       </label>
     </div>
-    <div class="container__title-right">{{ data.titleRight }}</div>
+    <div
+      class="container__title"
+      :class="{
+        'container__title--active': data.isChecked,
+      }"
+    >
+      {{ data.titleRight }}
+    </div>
   </div>
 </template>
 
@@ -29,11 +43,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 0;
+  background: var(--color-magnolia);
+
+  &__title {
+    color: var(--color-cool-gray);
+    font-family: var(--font-family);
+    font-weight: var(--font-medium);
+    text-transform: capitalize;
+    margin: 0 20px;
+    transition: 0.4s;
+
+    &--active {
+      color: var(--color-marine-blue);
+    }
+  }
+}
+
 .toggle {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 48px;
+  height: 24px;
 
   & input {
     opacity: 0;
@@ -42,7 +77,6 @@ export default {
   }
 }
 
-/* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -50,19 +84,17 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
+  background-color: var(--color-marine-blue);
   transition: 0.4s;
 
   &:before {
     position: absolute;
     content: '';
-    height: 26px;
-    width: 26px;
+    height: 16px;
+    width: 16px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
-    -webkit-transition: 0.4s;
+    background-color: var(--color-white);
     transition: 0.4s;
   }
 
@@ -77,17 +109,15 @@ export default {
 
 input {
   &:checked + .slider {
-    background-color: #2196f3;
+    background-color: var(--color-marine-blue);
   }
 
   &:focus + .slider {
-    box-shadow: 0 0 1px #2196f3;
+    box-shadow: 0 0 1px var(--color-marine-blue);
   }
 
   &:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    transform: translateX(24px);
   }
 }
 </style>
