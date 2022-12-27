@@ -1,5 +1,8 @@
 import { createStore } from 'vuex';
 
+import blockYourInfo from '@/store/blockYourInfo';
+import blockSelectPlan from '@/store/blockSelectPlan';
+
 // rename setNextStep -> setCurrentStep
 const store = createStore({
   state: () => ({
@@ -44,11 +47,11 @@ const store = createStore({
         errorText: 'This field is required',
       },
     },
-    toggle: {
-      titleLeft: 'monthly',
-      titleRight: 'yearly',
-      isChecked: false,
-    },
+    // toggle: {
+    //   titleLeft: 'monthly',
+    //   titleRight: 'yearly',
+    //   isChecked: false,
+    // },
   }),
   getters: {},
   mutations: {
@@ -75,9 +78,13 @@ const store = createStore({
 
       state.inputs[inputName].value = value;
     },
-    updateToggle(state) {
-      state.toggle.isChecked = !state.toggle.isChecked;
-    },
+    // updateToggle(state) {
+    //   state.toggle.isChecked = !state.toggle.isChecked;
+    // },
+  },
+  modules: {
+    blockYourInfo,
+    blockSelectPlan,
   },
 });
 

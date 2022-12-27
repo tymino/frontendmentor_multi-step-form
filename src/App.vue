@@ -18,6 +18,7 @@
         v-model:data="inputs"
       />
     </div> -->
+    <Title :data="header"></Title>
     <div class="content__toggle">
       <Toggle :data="toggle" v-model:data="toggle" />
     </div>
@@ -31,6 +32,7 @@ import { useStore } from 'vuex';
 // import Input from './components/UI/Input.vue';
 import Step from './components/UI/Step.vue';
 import Toggle from './components/UI/Toggle.vue';
+import Title from './components/Title.vue';
 
 export default {
   name: 'App',
@@ -39,6 +41,7 @@ export default {
     // Input,
     Step,
     Toggle,
+    Title,
   },
   setup() {
     const store = useStore();
@@ -53,8 +56,16 @@ export default {
           store.commit('updateInput', inputData);
         },
       }),
+
+      // toggle: computed({
+      //   get: () => store.state.toggle,
+      //   set: (value) => {
+      //     store.commit('updateToggle', value);
+      //   },
+      // }),
+      header: computed(() => store.state.blockSelectPlan.header),
       toggle: computed({
-        get: () => store.state.toggle,
+        get: () => store.state.blockSelectPlan.toggle,
         set: (value) => {
           store.commit('updateToggle', value);
         },
