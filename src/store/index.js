@@ -47,11 +47,6 @@ const store = createStore({
         errorText: 'This field is required',
       },
     },
-    // toggle: {
-    //   titleLeft: 'monthly',
-    //   titleRight: 'yearly',
-    //   isChecked: false,
-    // },
   }),
   getters: {},
   mutations: {
@@ -78,9 +73,6 @@ const store = createStore({
 
       state.inputs[inputName].value = value;
     },
-    // updateToggle(state) {
-    //   state.toggle.isChecked = !state.toggle.isChecked;
-    // },
   },
   modules: {
     blockYourInfo,
