@@ -2,9 +2,9 @@
   <div class="container">
     <Title class="container__title" :data="header"></Title>
 
-    <div class="container__inputs">
+    <div class="container__form">
       <Input
-        class="container__inputs-item"
+        class="container__form-item"
         v-for="data in inputs"
         :key="data.id"
         :data="data"
@@ -52,14 +52,17 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 80px;
 
   &__title {
-    margin: 30px 0px;
+    margin: 40px 0px;
   }
 
-  &__inputs {
-    &-item:not(:last-child) {
+  &__form {
+    &-item {
       margin-bottom: 30px;
     }
   }

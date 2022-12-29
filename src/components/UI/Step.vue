@@ -29,8 +29,6 @@ export default {
 .step {
   display: flex;
   align-items: center;
-  padding: 20px;
-  background: var(--color-purplish-blue);
   transition: all 0.8s ease;
 
   &__number {

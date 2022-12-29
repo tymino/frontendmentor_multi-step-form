@@ -1,8 +1,20 @@
 <template>
   <div class="wrapper">
     <div class="content">
-      <div class="content__step">
-        <Step v-for="step in steps" :key="step.id" :data="step" />
+      <div class="content__aside">
+        <img
+          class="content__aside-background"
+          src="./assets/images/bg-sidebar-desktop.svg"
+          alt=""
+        />
+        <div class="content__aside-steps">
+          <Step
+            class="content__aside-steps-item"
+            v-for="step in steps"
+            :key="step.id"
+            :data="step"
+          />
+        </div>
       </div>
 
       <BlockInputs class="content__block" />
@@ -78,8 +90,21 @@ export default {
   background: var(--color-white);
   border-radius: var(--border-radius);
 
-  &__step {
-    margin-right: 10px;
+  &__aside {
+    position: relative;
+
+    // &-background {
+    // }
+
+    &-steps {
+      position: absolute;
+      top: 40px;
+      left: 30px;
+
+      &-item {
+        margin-bottom: 30px;
+      }
+    }
   }
 
   &__block {

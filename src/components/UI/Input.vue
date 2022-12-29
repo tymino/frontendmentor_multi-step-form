@@ -43,13 +43,15 @@ export default {
   &__describe {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
   }
+
   &__name {
     color: var(--color-marine-blue);
     font-weight: var(--font-medium);
     text-transform: capitalize;
   }
+
   &__error {
     color: var(--color-strawberry-red);
   }
@@ -64,6 +66,10 @@ export default {
     font-family: var(--font-family);
     font-weight: var(--font-bold);
     outline: none;
+
+    &::placeholder {
+      color: var(--color-cool-gray);
+    }
 
     &--error {
       border: 1px solid var(--color-strawberry-red);
