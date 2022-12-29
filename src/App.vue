@@ -4,44 +4,25 @@
       <Step v-for="step in steps" :key="step.id" :data="step" />
     </div>
 
-    <!-- <div class="content__buttons">
-      <Button @click="setNextStep">next step</Button>
-      <Button btnType="confirm">confirm</Button>
-      <Button btnType="link">go back</Button>
-    </div>
-
-    <div class="content__inputs">
-      <Input
-        v-for="data in inputs"
-        :key="data.id"
-        :data="data"
-        v-model:data="inputs"
-      />
-    </div> -->
-    <Title :data="header"></Title>
-    <div class="content__toggle">
+    <BlockInputs />
+    <!-- <div class="content__toggle">
       <Toggle :data="toggle" v-model:data="toggle" />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import { computed } from 'vue';
 import { useStore } from 'vuex';
-// import Button from './components/UI/Button.vue';
-// import Input from './components/UI/Input.vue';
+
 import Step from './components/UI/Step.vue';
-import Toggle from './components/UI/Toggle.vue';
-import Title from './components/Title.vue';
+import BlockInputs from './components/BlockYourInfo.vue';
 
 export default {
   name: 'App',
   components: {
-    // Button,
-    // Input,
     Step,
-    Toggle,
-    Title,
+    BlockInputs,
   },
   setup() {
     const store = useStore();
@@ -49,7 +30,7 @@ export default {
     return {
       currentStep: computed(() => store.state.currentStep),
       steps: computed(() => store.state.steps),
-      setNextStep: () => store.commit('setNextStep'),
+      setCurrentStep: () => store.commit('setCurrentStep'),
       inputs: computed({
         get: () => store.state.inputs,
         set: (inputData) => {

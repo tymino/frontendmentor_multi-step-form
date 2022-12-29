@@ -47,6 +47,7 @@ export default {
   }
   &__name {
     color: var(--color-marine-blue);
+    font-weight: var(--font-medium);
     text-transform: capitalize;
   }
   &__error {
