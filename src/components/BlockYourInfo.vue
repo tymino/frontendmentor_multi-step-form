@@ -1,9 +1,10 @@
 <template>
   <div class="container">
-    <Title :data="header"></Title>
+    <Title class="container__title" :data="header"></Title>
 
-    <div class="content__inputs">
+    <div class="container__inputs">
       <Input
+        class="container__inputs-item"
         v-for="data in inputs"
         :key="data.id"
         :data="data"
@@ -11,7 +12,9 @@
       />
     </div>
 
-    <Button @click="setCurrentStep">next step</Button>
+    <div class="container__button">
+      <Button @click="setCurrentStep">next step</Button>
+    </div>
   </div>
 </template>
 
@@ -47,4 +50,25 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+  padding: 0 100px;
+
+  &__title {
+    margin: 30px 0px;
+  }
+
+  &__inputs {
+    &-item:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 60px;
+    margin-bottom: 14px;
+  }
+}
+</style>

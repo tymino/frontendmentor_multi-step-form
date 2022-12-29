@@ -1,13 +1,15 @@
 <template>
-  <div class="content">
-    <div class="content__step">
-      <Step v-for="step in steps" :key="step.id" :data="step" />
-    </div>
+  <div class="wrapper">
+    <div class="content">
+      <div class="content__step">
+        <Step v-for="step in steps" :key="step.id" :data="step" />
+      </div>
 
-    <BlockInputs />
-    <!-- <div class="content__toggle">
+      <BlockInputs class="content__block" />
+      <!-- <div class="content__toggle">
       <Toggle :data="toggle" v-model:data="toggle" />
     </div> -->
+    </div>
   </div>
 </template>
 
@@ -57,30 +59,30 @@ export default {
 </script>
 
 <style lang="scss">
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+  background: var(--color-magnolia);
+}
+
 .content {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 100px;
-  margin-top: 40px;
-  // background: var(--color-cool-gray);
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--design-max-width);
+  padding: 14px;
+  background: var(--color-white);
+  border-radius: var(--border-radius);
 
-  &__buttons {
-    margin: 10px;
-
-    & > button {
-      margin: 10px;
-    }
+  &__step {
+    margin-right: 10px;
   }
 
-  &__inputs {
-    & > div {
-      margin-bottom: 20px;
-    }
-  }
-
-  &__toggle {
-    margin-top: 20px;
+  &__block {
   }
 }
 </style>
