@@ -68,4 +68,17 @@ export default {
     font-weight: var(--font-bold);
   }
 }
+
+@media (max-width: 1000px) {
+  .step {
+    &__number {
+      margin-right: 0px;
+    }
+
+    &__subtitle,
+    &__title {
+      display: none;
+    }
+  }
+}
 </style>

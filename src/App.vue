@@ -2,11 +2,14 @@
   <div class="wrapper">
     <div class="content">
       <div class="content__aside">
-        <img
-          class="content__aside-background"
-          src="./assets/images/bg-sidebar-desktop.svg"
-          alt=""
-        />
+        <picture class="content__aside-background">
+          <source
+            srcset="./assets/images/bg-sidebar-desktop.svg"
+            media="(min-width: 1000px)"
+          />
+          <img src="./assets/images/bg-sidebar-mobile.svg" alt="bg-sidebar " />
+        </picture>
+
         <div class="content__aside-steps">
           <Step
             class="content__aside-steps-item"
@@ -17,7 +20,7 @@
         </div>
       </div>
 
-      <BlockInputs class="content__block" />
+      <BlockInputs />
       <!-- <div class="content__toggle">
       <Toggle :data="toggle" v-model:data="toggle" />
     </div> -->
@@ -85,16 +88,13 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  max-width: var(--design-max-width);
+  max-width: 950px;
   padding: 14px;
   background: var(--color-white);
   border-radius: var(--border-radius);
 
   &__aside {
     position: relative;
-
-    // &-background {
-    // }
 
     &-steps {
       position: absolute;
@@ -106,8 +106,44 @@ export default {
       }
     }
   }
+}
 
-  &__block {
+@media (max-width: 1000px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    max-width: 375px;
+    padding: 0;
+    background: var(--color-magnolia);
+    z-index: 2;
+
+    &__aside {
+      position: relative;
+      width: 100%;
+
+      &-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
+      &-steps {
+        position: static;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 30px 0;
+
+        &-item {
+          margin-bottom: 0px;
+
+          &:not(:last-child) {
+            margin-right: 20px;
+          }
+        }
+      }
+    }
   }
 }
 </style>

@@ -59,7 +59,7 @@ export default {
   &__input {
     width: 100%;
     padding: 10px;
-    border: 1px solid var(--color-cool-gray);
+    border: 1px solid var(--color-light-gray);
     border-radius: var(--border-radius);
     color: var(--color-marine-blue);
     font-size: 1rem;

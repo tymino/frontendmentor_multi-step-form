@@ -74,4 +74,36 @@ export default {
     margin-bottom: 14px;
   }
 }
+
+@media (max-width: 1000px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 0px;
+    border-radius: var(--border-radius);
+
+    &__title {
+      margin: 0 14px;
+      padding: 30px 20px;
+      background: var(--color-white);
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    &__form {
+      margin: 0 14px;
+      padding: 0px 20px;
+      background: var(--color-white);
+
+      &-item {
+        margin-bottom: 30px;
+      }
+    }
+
+    &__button {
+      padding: 10px 14px;
+      background: var(--color-white);
+    }
+  }
+}
 </style>
