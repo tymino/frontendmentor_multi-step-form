@@ -1,24 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="content">
-      <div class="content__aside">
-        <picture class="content__aside-background">
-          <source
-            srcset="./assets/images/bg-sidebar-desktop.svg"
-            media="(min-width: 1000px)"
-          />
-          <img src="./assets/images/bg-sidebar-mobile.svg" alt="bg-sidebar " />
-        </picture>
-
-        <div class="content__aside-steps">
-          <Step
-            class="content__aside-steps-item"
-            v-for="step in steps"
-            :key="step.id"
-            :data="step"
-          />
-        </div>
-      </div>
+      <Aside class="content__aside" :stepsData="steps" />
 
       <BlockInputs />
       <!-- <div class="content__toggle">
@@ -32,13 +15,13 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
-import Step from './components/UI/Step.vue';
+import Aside from './components/Aside.vue';
 import BlockInputs from './components/BlockYourInfo.vue';
 
 export default {
   name: 'App',
   components: {
-    Step,
+    Aside,
     BlockInputs,
   },
   setup() {
@@ -92,20 +75,6 @@ export default {
   padding: 14px;
   background: var(--color-white);
   border-radius: var(--border-radius);
-
-  &__aside {
-    position: relative;
-
-    &-steps {
-      position: absolute;
-      top: 40px;
-      left: 30px;
-
-      &-item {
-        margin-bottom: 30px;
-      }
-    }
-  }
 }
 
 @media (max-width: 1000px) {
@@ -116,34 +85,6 @@ export default {
     padding: 0;
     background: var(--color-magnolia);
     z-index: 2;
-
-    &__aside {
-      position: relative;
-      width: 100%;
-
-      &-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-      }
-
-      &-steps {
-        position: static;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin: 30px 0;
-
-        &-item {
-          margin-bottom: 0px;
-
-          &:not(:last-child) {
-            margin-right: 20px;
-          }
-        }
-      }
-    }
   }
 }
 </style>
