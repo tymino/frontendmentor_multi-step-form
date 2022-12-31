@@ -5,6 +5,18 @@ import blockSelectPlan from '@/store/blockSelectPlan';
 
 const store = createStore({
   state: () => ({
+    formData: {
+      user: {
+        name: '',
+        email: '',
+        phone: '',
+      },
+      plan: {
+        name: '',
+        type: '',
+      },
+      addons: [],
+    },
     currentStep: 1,
     steps: [
       { id: 1, subtitle: 'step', title: 'your info', isActive: true },
