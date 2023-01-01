@@ -11,6 +11,7 @@
       :placeholder="data.placeholder"
       :value="data.value"
       @input="updateInput"
+      @blur="this.$emit('blur', data.name)"
     />
   </div>
 </template>

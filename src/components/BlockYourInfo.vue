@@ -9,6 +9,7 @@
         :key="data.id"
         :data="data"
         v-model:data="inputs"
+        v-on:blur="handleBlur"
       />
     </div>
 
@@ -45,6 +46,7 @@ export default {
           store.commit('updateInput', inputData);
         },
       }),
+      handleBlur: (inputName) => store.commit('handleBlur', inputName),
     };
   },
 };

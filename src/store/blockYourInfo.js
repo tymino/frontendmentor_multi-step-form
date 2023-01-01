@@ -51,12 +51,19 @@ const blockYourInfo = {
   }),
   getters: {},
   mutations: {
+    handleBlur(state, inputName) {
+      const target = state.inputs[inputName];
+
+      if (target.value === '') {
+        target.error = true;
+      }
+    },
     updateInput(state, inputData) {
       const { inputName, value } = inputData;
-      const targetInput = state.inputs[inputName];
+      const target = state.inputs[inputName];
 
-      targetInput.error = !targetInput.validate(value);
-      targetInput.value = value;
+      target.error = !target.validate(value);
+      target.value = value;
     },
   },
 };
