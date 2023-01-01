@@ -5,18 +5,18 @@ import blockSelectPlan from '@/store/blockSelectPlan';
 
 const store = createStore({
   state: () => ({
-    formData: {
-      user: {
-        name: '',
-        email: '',
-        phone: '',
-      },
-      plan: {
-        name: '',
-        type: '',
-      },
-      addons: [],
-    },
+    // formData: {
+    //   user: {
+    //     name: '',
+    //     email: '',
+    //     phone: '',
+    //   },
+    //   plan: {
+    //     name: '',
+    //     type: '',
+    //   },
+    //   addons: [],
+    // },
     currentStep: 1,
     steps: [
       { id: 1, subtitle: 'step', title: 'your info', isActive: true },
@@ -28,11 +28,10 @@ const store = createStore({
   getters: {},
   mutations: {
     setCurrentStep(state) {
-      if (state.currentStep === state.steps.length) {
-        state.currentStep = 1;
-      } else {
-        state.currentStep++;
-      }
+      console.log('setCurrentStep');
+      state.currentStep === state.steps.length
+        ? (state.currentStep = 1)
+        : state.currentStep++;
 
       state.steps = state.steps.map((step) => ({
         ...step,

@@ -14,7 +14,7 @@
     </div>
 
     <div class="container__button">
-      <Button @click="setCurrentStep">next step</Button>
+      <Button @click="submit">next step</Button>
     </div>
   </div>
 </template>
@@ -43,10 +43,11 @@ export default {
       inputs: computed({
         get: () => store.state.blockYourInfo.inputs,
         set: (inputData) => {
-          store.commit('updateInput', inputData);
+          store.commit('setInputs', inputData);
         },
       }),
       handleBlur: (inputName) => store.commit('handleBlur', inputName),
+      submit: () => store.commit('submit'),
     };
   },
 };

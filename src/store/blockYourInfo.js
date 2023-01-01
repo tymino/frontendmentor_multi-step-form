@@ -9,7 +9,7 @@ const validateEmail = (value) => {
 };
 
 const validatePhoneNumber = (value) => {
-  const regex = new RegExp(`^\\w+@\\w+.\\w{2,5}$`);
+  const regex = new RegExp(`^[0-9]+$`);
   return regex.test(value);
 };
 
@@ -51,6 +51,13 @@ const blockYourInfo = {
   }),
   getters: {},
   mutations: {
+    setInputs(state, inputData) {
+      const { inputName, value } = inputData;
+      const target = state.inputs[inputName];
+
+      target.error = !target.validate(value);
+      target.value = value;
+    },
     handleBlur(state, inputName) {
       const target = state.inputs[inputName];
 
@@ -58,12 +65,17 @@ const blockYourInfo = {
         target.error = true;
       }
     },
-    updateInput(state, inputData) {
-      const { inputName, value } = inputData;
-      const target = state.inputs[inputName];
+    submit(state) {
+      const inputs = state.inputs;
 
-      target.error = !target.validate(value);
-      target.value = value;
+      for (const key in inputs) {
+        if (inputs[key].error || inputs[key].value === '') {
+          inputs[key].error = true;
+          return;
+        }
+      }
+
+      this.commit('setCurrentStep');
     },
   },
 };
