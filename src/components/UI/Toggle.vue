@@ -45,6 +45,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 14px 0;

@@ -1,12 +1,10 @@
 <template>
   <div class="wrapper">
-    <div class="content">
-      <Aside class="content__aside" :stepsData="steps" />
+    <div class="app">
+      <Aside class="app__aside" :stepsData="steps" />
 
-      <BlockInputs />
-      <!-- <div class="content__toggle">
-      <Toggle :data="toggle" v-model:data="toggle" />
-    </div> -->
+      <BlockYourInfo v-if="currentStep === 1" />
+      <BlockSelectPlan v-else-if="currentStep === 2" />
     </div>
   </div>
 </template>
@@ -16,13 +14,15 @@ import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 import Aside from './components/Aside.vue';
-import BlockInputs from './components/BlockYourInfo.vue';
+import BlockYourInfo from './components/BlockYourInfo.vue';
+import BlockSelectPlan from './components/BlockSelectPlan.vue';
 
 export default {
   name: 'App',
   components: {
     Aside,
-    BlockInputs,
+    BlockYourInfo,
+    BlockSelectPlan,
   },
   setup() {
     const store = useStore();
@@ -66,10 +66,9 @@ export default {
   background: var(--color-magnolia);
 }
 
-.content {
+.app {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   width: 100%;
   max-width: 950px;
   padding: 14px;
@@ -78,7 +77,7 @@ export default {
 }
 
 @media (max-width: 1000px) {
-  .content {
+  .app {
     flex-direction: column;
     align-items: center;
     max-width: 375px;

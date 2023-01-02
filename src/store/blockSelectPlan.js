@@ -15,6 +15,18 @@ const blockSelectPlan = {
     updateToggle(state) {
       state.toggle.isChecked = !state.toggle.isChecked;
     },
+    // submitSelects(state) {
+    //   const inputs = state.inputs;
+
+    //   for (const key in inputs) {
+    //     if (inputs[key].error || inputs[key].value === '') {
+    //       inputs[key].error = true;
+    //       return;
+    //     }
+    //   }
+
+    //   this.commit('setCurrentStep');
+    // },
   },
 };
 

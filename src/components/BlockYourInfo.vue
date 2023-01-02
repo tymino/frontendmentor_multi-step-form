@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
-    <Title class="container__title" :data="header"></Title>
+  <div class="content">
+    <Title class="content__title" :data="header"></Title>
 
-    <div class="container__form">
+    <div class="content__form">
       <Input
-        class="container__form-item"
+        class="content__form-item"
         v-for="data in inputs"
         :key="data.id"
         :data="data"
@@ -13,7 +13,7 @@
       />
     </div>
 
-    <div class="container__button">
+    <div class="content__button">
       <Button @click="submit">next step</Button>
     </div>
   </div>
@@ -23,7 +23,7 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
-import Title from './Title.vue';
+import Title from './UI/Title.vue';
 import Input from './UI/Input.vue';
 import Button from './UI/Button.vue';
 
@@ -39,7 +39,6 @@ export default {
 
     return {
       header: computed(() => store.state.blockYourInfo.header),
-      setCurrentStep: () => store.commit('setCurrentStep'),
       inputs: computed({
         get: () => store.state.blockYourInfo.inputs,
         set: (inputData) => {
@@ -47,18 +46,19 @@ export default {
         },
       }),
       handleBlur: (inputName) => store.commit('handleBlur', inputName),
-      submit: () => store.commit('submit'),
+      submit: () => store.commit('submitInputs'),
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.container {
+.content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-right: 80px;
+  padding: 0 80px;
+  width: 100%;
 
   &__title {
     margin: 40px 0px;
@@ -79,7 +79,7 @@ export default {
 }
 
 @media (max-width: 1000px) {
-  .container {
+  .content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -17,7 +17,7 @@ const store = createStore({
     //   },
     //   addons: [],
     // },
-    currentStep: 1,
+    currentStep: 2,
     steps: [
       { id: 1, subtitle: 'step', title: 'your info', isActive: true },
       { id: 2, subtitle: 'step', title: 'select plan', isActive: false },
