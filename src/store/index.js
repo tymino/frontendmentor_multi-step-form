@@ -25,7 +25,19 @@ const store = createStore({
       { id: 4, subtitle: 'step', title: 'summary', isActive: false },
     ],
   }),
-  getters: {},
+  getters: {
+    getCostPlan:
+      (state) =>
+      (value, isBonus = false) => {
+        const currency = isBonus ? '+$' : '$';
+        const month = '/mo';
+        const year = '/yr';
+
+        return state.blockSelectPlan.toggle.isChecked
+          ? currency + value * 10 + year
+          : currency + value + month;
+      },
+  },
   mutations: {
     setCurrentStep(state) {
       console.log('setCurrentStep');

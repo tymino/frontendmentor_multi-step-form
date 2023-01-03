@@ -2,7 +2,9 @@
   <div class="content">
     <Title class="content__title" :data="header"></Title>
 
-    <div class="content__selects">asdasdas</div>
+    <div class="content__options">
+      <Options :data="options" :getCostPlan="getCostPlan" />
+    </div>
 
     <div class="content__toggle">
       <Toggle :data="toggle" v-model:data="toggle" />
@@ -19,6 +21,7 @@ import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 import Title from './UI/Title.vue';
+import Options from './UI/Options.vue';
 import Toggle from './UI/Toggle.vue';
 import Button from './UI/Button.vue';
 
@@ -26,14 +29,21 @@ export default {
   name: 'block-select-plan',
   components: {
     Title,
+    Options,
     Toggle,
     Button,
   },
   setup() {
     const store = useStore();
 
+    // ---
+    // Подумать о роутах реальных, а не о if-ках
+    // ---
+
     return {
       header: computed(() => store.state.blockSelectPlan.header),
+      options: computed(() => store.state.blockSelectPlan.options),
+      getCostPlan: computed(() => store.getters.getCostPlan),
       toggle: computed({
         get: () => store.state.blockSelectPlan.toggle,
         set: () => store.commit('updateToggle'),

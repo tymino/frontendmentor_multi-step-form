@@ -4,6 +4,26 @@ const blockSelectPlan = {
       title: 'Select your plan',
       subtitle: 'You have the option of monthly or yearly billing.',
     },
+    options: {
+      arcade: {
+        name: 'arcade',
+        isSelected: true,
+        icon: 'icon-arcade.svg',
+        price: 9,
+      },
+      advanced: {
+        name: 'advanced',
+        isSelected: false,
+        icon: 'icon-advanced.svg',
+        price: 12,
+      },
+      pro: {
+        name: 'pro',
+        isSelected: false,
+        icon: 'icon-pro.svg',
+        price: 15,
+      },
+    },
     toggle: {
       titleLeft: 'monthly',
       titleRight: 'yearly',
