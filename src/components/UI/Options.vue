@@ -3,7 +3,7 @@
     <div class="container__option" v-for="option in data" :key="option.name">
       <img
         class="container__option-icon"
-        :src="`@/assets/images/${option.icon}`"
+        :src="require(`@/assets/images/${option.icon}`)"
         :alt="option.name"
       />
       <div class="container__option-name">{{ option.name }}</div>
