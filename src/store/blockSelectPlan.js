@@ -35,7 +35,7 @@ const blockSelectPlan = {
     updateToggle(state) {
       state.toggle.isChecked = !state.toggle.isChecked;
     },
-    // submitSelects(state) {
+    // submitOptions(state) {
     //   const inputs = state.inputs;
 
     //   for (const key in inputs) {
