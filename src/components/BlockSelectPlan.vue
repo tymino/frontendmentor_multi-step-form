@@ -3,7 +3,11 @@
     <Title class="content__title" :data="header"></Title>
 
     <div class="content__options">
-      <Options :data="options" :getCostPlan="getCostPlan" />
+      <Options
+        :data="options"
+        :getCostPlan="getCostPlan"
+        :toggle="toggle.isChecked"
+      />
     </div>
 
     <div class="content__toggle">
@@ -64,6 +68,10 @@ export default {
 
   &__title {
     margin: 40px 0px;
+  }
+
+  &__options {
+    margin-bottom: 20px;
   }
 
   &__button {
