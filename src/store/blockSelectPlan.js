@@ -42,7 +42,7 @@ const blockSelectPlan = {
       }));
     },
     submitOptions() {
-      this.commit('setCurrentStep');
+      this.commit('setNextStep');
     },
   },
 };

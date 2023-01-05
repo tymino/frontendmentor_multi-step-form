@@ -28,29 +28,8 @@ export default {
     const store = useStore();
 
     return {
-      currentStep: computed(() => store.state.currentStep),
       steps: computed(() => store.state.steps),
-      setCurrentStep: () => store.commit('setCurrentStep'),
-      inputs: computed({
-        get: () => store.state.inputs,
-        set: (inputData) => {
-          store.commit('updateInput', inputData);
-        },
-      }),
-
-      // toggle: computed({
-      //   get: () => store.state.toggle,
-      //   set: (value) => {
-      //     store.commit('updateToggle', value);
-      //   },
-      // }),
-      header: computed(() => store.state.blockSelectPlan.header),
-      toggle: computed({
-        get: () => store.state.blockSelectPlan.toggle,
-        set: (value) => {
-          store.commit('updateToggle', value);
-        },
-      }),
+      currentStep: computed(() => store.getters.currentStep),
     };
   },
 };

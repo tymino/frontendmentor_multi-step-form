@@ -75,7 +75,7 @@ const blockYourInfo = {
         }
       }
 
-      this.commit('setCurrentStep');
+      this.commit('setNextStep');
     },
   },
 };

@@ -62,7 +62,7 @@ export default {
     border: 1px solid var(--color-light-gray);
     border-radius: var(--border-radius);
 
-    transition: all ease-in var(--transition-delay);
+    transition: var(--transition-delay);
     cursor: pointer;
 
     &--active {

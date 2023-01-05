@@ -6,18 +6,6 @@ import blockSelectPlan from '@/store/blockSelectPlan';
 const store = createStore({
   state: () => ({
     // formData: {
-    //   user: {
-    //     name: '',
-    //     email: '',
-    //     phone: '',
-    //   },
-    //   plan: {
-    //     name: '',
-    //     type: '',
-    //   },
-    //   addons: [],
-    // },
-    currentStep: 2,
     steps: [
       { id: 1, subtitle: 'step', title: 'your info', isActive: true },
       { id: 2, subtitle: 'step', title: 'select plan', isActive: false },
@@ -26,6 +14,9 @@ const store = createStore({
     ],
   }),
   getters: {
+    currentStep(state) {
+      return state.steps.find((step) => step.isActive === true).id;
+    },
     getCostPlan:
       (state) =>
       (value, isBonus = false) => {
@@ -39,15 +30,16 @@ const store = createStore({
       },
   },
   mutations: {
-    setCurrentStep(state) {
-      console.log('setCurrentStep');
-      state.currentStep === state.steps.length
-        ? (state.currentStep = 1)
-        : state.currentStep++;
+    setNextStep(state) {
+      let currentStepValue = state.steps.find(
+        (step) => step.isActive === true
+      ).id;
+      const nextStepValue =
+        currentStepValue === state.steps.length ? 1 : ++currentStepValue;
 
       state.steps = state.steps.map((step) => ({
         ...step,
-        isActive: step.id === state.currentStep ? true : false,
+        isActive: step.id === nextStepValue,
       }));
     },
   },
