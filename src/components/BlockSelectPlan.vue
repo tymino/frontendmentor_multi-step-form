@@ -52,7 +52,7 @@ export default {
         get: () => store.state.blockSelectPlan.toggle,
         set: () => store.commit('setToggle'),
       }),
-      submit: () => store.commit('submitSelects'),
+      submit: () => store.commit('submitOptions'),
     };
   },
 };
