@@ -5,13 +5,17 @@
       :class="{ 'container__option--active': option.isSelected }"
       v-for="option in data"
       :key="option.name"
+      :data-name="option.name"
+      @click="updateOption"
     >
       <img
         class="container__option-icon"
         :src="require(`@/assets/images/${option.icon}`)"
         :alt="option.name"
       />
-      <div class="container__option-name">{{ option.name }}</div>
+      <div class="container__option-name">
+        {{ option.name }}
+      </div>
       <div class="container__option-price">
         {{ getCostPlan(option.price) }}
       </div>
@@ -39,6 +43,12 @@ export default {
       required: true,
     },
   },
+  methods: {
+    updateOption(event) {
+      const target = event.currentTarget.dataset.name;
+      this.$emit('update:data', target);
+    },
+  },
 };
 </script>
 
@@ -51,6 +61,9 @@ export default {
     padding: 20px;
     border: 1px solid var(--color-light-gray);
     border-radius: var(--border-radius);
+
+    transition: all ease-in var(--transition-delay);
+    cursor: pointer;
 
     &--active {
       border: 1px solid var(--color-purplish-blue);

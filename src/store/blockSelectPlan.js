@@ -4,26 +4,26 @@ const blockSelectPlan = {
       title: 'Select your plan',
       subtitle: 'You have the option of monthly or yearly billing.',
     },
-    options: {
-      arcade: {
+    options: [
+      {
         name: 'arcade',
         isSelected: true,
         icon: 'icon-arcade.svg',
         price: 9,
       },
-      advanced: {
+      {
         name: 'advanced',
         isSelected: false,
         icon: 'icon-advanced.svg',
         price: 12,
       },
-      pro: {
+      {
         name: 'pro',
         isSelected: false,
         icon: 'icon-pro.svg',
         price: 15,
       },
-    },
+    ],
     toggle: {
       titleLeft: 'monthly',
       titleRight: 'yearly',
@@ -32,8 +32,14 @@ const blockSelectPlan = {
   }),
   getters: {},
   mutations: {
-    updateToggle(state) {
+    setToggle(state) {
       state.toggle.isChecked = !state.toggle.isChecked;
+    },
+    setOption(state, name) {
+      state.options = state.options.map((option) => ({
+        ...option,
+        isSelected: option.name === name,
+      }));
     },
     // submitOptions(state) {
     //   const inputs = state.inputs;

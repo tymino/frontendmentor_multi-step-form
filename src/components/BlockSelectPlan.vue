@@ -5,6 +5,7 @@
     <div class="content__options">
       <Options
         :data="options"
+        v-model:data="options"
         :getCostPlan="getCostPlan"
         :toggle="toggle.isChecked"
       />
@@ -40,17 +41,16 @@ export default {
   setup() {
     const store = useStore();
 
-    // ---
-    // Подумать о роутах реальных, а не о if-ках
-    // ---
-
     return {
       header: computed(() => store.state.blockSelectPlan.header),
-      options: computed(() => store.state.blockSelectPlan.options),
+      options: computed({
+        get: () => store.state.blockSelectPlan.options,
+        set: (name) => store.commit('setOption', name),
+      }),
       getCostPlan: computed(() => store.getters.getCostPlan),
       toggle: computed({
         get: () => store.state.blockSelectPlan.toggle,
-        set: () => store.commit('updateToggle'),
+        set: () => store.commit('setToggle'),
       }),
       submit: () => store.commit('submitSelects'),
     };
