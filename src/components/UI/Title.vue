@@ -32,7 +32,7 @@ export default {
   &__sub {
     color: var(--color-cool-gray);
     font-size: 1rem;
-    font-weight: var(--font-medium);
+    font-weight: var(--font-light);
   }
 }
 </style>

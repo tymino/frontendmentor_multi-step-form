@@ -5,6 +5,7 @@
 
       <BlockYourInfo v-if="currentStep === 1" />
       <BlockSelectPlan v-else-if="currentStep === 2" />
+      <BlockPickAddons v-else-if="currentStep === 3" />
     </div>
   </div>
 </template>
@@ -16,6 +17,7 @@ import { useStore } from 'vuex';
 import Aside from './components/Aside.vue';
 import BlockYourInfo from './components/BlockYourInfo.vue';
 import BlockSelectPlan from './components/BlockSelectPlan.vue';
+import BlockPickAddons from './components/BlockPickAddons.vue';
 
 export default {
   name: 'App',
@@ -23,6 +25,7 @@ export default {
     Aside,
     BlockYourInfo,
     BlockSelectPlan,
+    BlockPickAddons,
   },
   setup() {
     const store = useStore();
