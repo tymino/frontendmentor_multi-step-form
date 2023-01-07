@@ -30,7 +30,7 @@ const blockPickAddons = {
     setCheckboxes(state, name) {
       console.log(state, name);
     },
-    submitCheckboxes() {
+    submitPickAddons() {
       this.commit('setNextStep');
     },
   },

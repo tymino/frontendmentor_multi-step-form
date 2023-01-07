@@ -65,7 +65,7 @@ const blockYourInfo = {
         target.error = true;
       }
     },
-    submitInputs(state) {
+    submitYourInfo(state) {
       const inputs = state.inputs;
 
       for (const key in inputs) {

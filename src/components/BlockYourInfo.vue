@@ -46,7 +46,7 @@ export default {
         },
       }),
       handleBlur: (inputName) => store.commit('handleBlur', inputName),
-      submit: () => store.commit('submitInputs'),
+      submit: () => store.commit('submitYourInfo'),
     };
   },
 };
