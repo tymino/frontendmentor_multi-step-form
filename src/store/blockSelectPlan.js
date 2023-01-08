@@ -30,7 +30,6 @@ const blockSelectPlan = {
       isChecked: false,
     },
   }),
-  getters: {},
   mutations: {
     setToggle(state) {
       state.toggle.isChecked = !state.toggle.isChecked;

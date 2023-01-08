@@ -25,7 +25,6 @@ const blockPickAddons = {
       },
     ],
   }),
-  getters: {},
   mutations: {
     setCheckboxes(state, name) {
       console.log(state, name);

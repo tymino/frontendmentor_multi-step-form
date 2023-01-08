@@ -49,7 +49,6 @@ const blockYourInfo = {
       },
     },
   }),
-  getters: {},
   mutations: {
     setInputs(state, inputData) {
       const { inputName, value } = inputData;

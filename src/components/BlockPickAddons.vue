@@ -2,7 +2,14 @@
   <div class="content">
     <Title class="content__title" :data="header"></Title>
 
-    <div class="content__checkboxes">asdasd</div>
+    <div class="content__checkboxes">
+      <CheckboxList
+        :data="checkboxes"
+        v-model:data="checkboxes"
+        :getCostPlan="getCostPlan"
+        :toggle="toggle.isChecked"
+      />
+    </div>
 
     <div class="content__button">
       <Button @click="submit">next step</Button>
@@ -13,6 +20,11 @@
 <script>
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+
+/*
+  refactor "toggle" - delete set
+  replace toggle?
+*/
 
 import Title from './UI/Title.vue';
 import Button from './UI/Button.vue';
@@ -28,15 +40,15 @@ export default {
 
     return {
       header: computed(() => store.state.blockPickAddons.header),
-      options: computed({
-        get: () => store.state.blockSelectPlan.options,
-        set: (name) => store.commit('setOption', name),
+      checkboxes: computed({
+        get: () => store.state.blockPickAddons.checkboxes,
+        set: (name) => store.commit('setCheckboxes', name),
       }),
-      getCostPlan: computed(() => store.getters.getCostPlan),
       toggle: computed({
         get: () => store.state.blockSelectPlan.toggle,
         set: () => store.commit('setToggle'),
       }),
+      getCostPlan: computed(() => store.getters.getCostPlan),
       submit: () => store.commit('submitPickAddons'),
     };
   },
