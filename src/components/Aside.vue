@@ -37,6 +37,7 @@ export default {
 <style lang="scss" scoped>
 .aside {
   position: relative;
+  user-select: none;
 
   &__steps {
     position: absolute;

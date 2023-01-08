@@ -27,12 +27,14 @@ import { useStore } from 'vuex';
 */
 
 import Title from './UI/Title.vue';
+import CheckboxList from './UI/CheckboxList.vue';
 import Button from './UI/Button.vue';
 
 export default {
   name: 'block-select-plan',
   components: {
     Title,
+    CheckboxList,
     Button,
   },
   setup() {

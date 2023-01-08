@@ -2,7 +2,12 @@
   <div class="checkbox-list">
     <div class="checkbox-list__item item" v-for="item in data" :key="item.name">
       <div class="item__checkbox">
-        <img class="item__checkbox-checked" v-if="isSelected" />
+        <img
+          class="item__checkbox-checked"
+          v-if="isSelected"
+          :src="require(`@/assets/images/${option.icon}`)"
+          :alt="option.name"
+        />
       </div>
       <div class="item__name">
         <div class="item__name-title"></div>
