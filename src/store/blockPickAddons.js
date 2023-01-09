@@ -27,7 +27,16 @@ const blockPickAddons = {
   }),
   mutations: {
     setCheckboxes(state, name) {
-      console.log(state, name);
+      state.checkboxes = state.checkboxes.map((checkbox) => {
+        if (name === checkbox.name) {
+          return {
+            ...checkbox,
+            isSelected: !checkbox.isSelected,
+          };
+        }
+
+        return checkbox;
+      });
     },
     submitPickAddons() {
       this.commit('setNextStep');

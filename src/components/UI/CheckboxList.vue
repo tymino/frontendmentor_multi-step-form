@@ -5,6 +5,8 @@
       :class="{ 'item--checked': item.isSelected }"
       v-for="item in data"
       :key="item.name"
+      :data-name="item.name"
+      @click="updateCheckbox"
     >
       <div
         class="item__checkbox"
@@ -48,7 +50,7 @@ export default {
     },
   },
   methods: {
-    updateOption(event) {
+    updateCheckbox(event) {
       const target = event.currentTarget.dataset.name;
       this.$emit('update:data', target);
     },
@@ -71,6 +73,8 @@ export default {
   align-items: center;
   border: 1px solid var(--color-light-gray);
   border-radius: var(--border-radius);
+  transition: var(--transition-delay);
+  cursor: pointer;
 
   &--checked {
     border: 1px solid var(--color-purplish-blue);
@@ -85,7 +89,7 @@ export default {
     padding: 2px;
     border: 1px solid var(--color-light-gray);
     border-radius: var(--border-radius);
-    cursor: pointer;
+    transition: var(--transition-delay);
 
     &--checked {
       background: var(--color-purplish-blue);
@@ -124,5 +128,14 @@ export default {
     color: var(--color-purplish-blue);
     font-weight: var(--font-light);
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: var(--transition-delay);
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
