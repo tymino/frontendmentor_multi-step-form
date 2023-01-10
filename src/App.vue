@@ -3,13 +3,15 @@
     <div class="app">
       <Aside class="app__aside" :stepsData="steps" />
 
-      <div class="app__form form">
-        <BlockYourInfo class="form__content" v-if="currentStep === 1" />
-        <BlockSelectPlan class="form__content" v-else-if="currentStep === 2" />
-        <BlockPickAddons class="form__content" v-else-if="currentStep === 3" />
-        <!-- <BlockPickAddons class="form__content" v-else-if="currentStep === 4" /> -->
+      <Gratitude class="app__gratitude" v-if="isVisibleGratitude" />
 
-        <div class="app__buttons">
+      <div class="app__form form" v-else>
+        <BlockYourInfo v-if="currentStep === 1" />
+        <BlockSelectPlan v-else-if="currentStep === 2" />
+        <BlockPickAddons v-else-if="currentStep === 3" />
+        <!-- <BlockPickAddons v-else-if="currentStep === 4" /> -->
+
+        <div class="form__buttons">
           <Button btnType="link" @click="setNextStep('back')">go back</Button>
           <Button
             v-if="currentStep === 4"
@@ -31,6 +33,7 @@ import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 import Aside from './components/Aside.vue';
+import Gratitude from './components/Gratitude.vue';
 import BlockYourInfo from './components/BlockYourInfo.vue';
 import BlockSelectPlan from './components/BlockSelectPlan.vue';
 import BlockPickAddons from './components/BlockPickAddons.vue';
@@ -40,6 +43,7 @@ export default {
   name: 'App',
   components: {
     Aside,
+    Gratitude,
     BlockYourInfo,
     BlockSelectPlan,
     BlockPickAddons,
@@ -49,6 +53,7 @@ export default {
     const store = useStore();
 
     return {
+      isVisibleGratitude: computed(() => store.state.isTheEnd),
       steps: computed(() => store.state.steps),
       currentStep: computed(() => store.state.currentStep),
       setNextStep: (direction) => store.commit('setStep', direction),
@@ -75,21 +80,21 @@ export default {
   padding: 14px;
   background: var(--color-white);
   border-radius: var(--border-radius);
-
-  &__buttons {
-    display: flex;
-    justify-content: space-between;
-  }
 }
 
 .form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 40px 90px 10px;
+  padding: 40px 90px 20px;
   width: 100%;
 
-  &__content {
+  // &__content {
+  // }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
   }
 }
 

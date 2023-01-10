@@ -58,7 +58,7 @@ export default {
   flex-direction: column;
 
   &__title {
-    margin: 40px 0px;
+    margin-bottom: 40px;
   }
 
   &__options {

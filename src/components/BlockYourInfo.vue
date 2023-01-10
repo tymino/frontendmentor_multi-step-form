@@ -50,7 +50,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // width: 100%;
 
   &__title {
     margin-bottom: 40px;

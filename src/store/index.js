@@ -7,13 +7,13 @@ import blockPickAddons from '@/store/blockPickAddons';
 const store = createStore({
   state: () => ({
     // formData: {
-    currentStep: 1,
     steps: [
       { id: 1, subtitle: 'step', title: 'your info', isActive: true },
       { id: 2, subtitle: 'step', title: 'select plan', isActive: false },
       { id: 3, subtitle: 'step', title: 'add-ons', isActive: false },
       { id: 4, subtitle: 'step', title: 'summary', isActive: false },
     ],
+    currentStep: 1,
     isTheEnd: false,
   }),
   getters: {
