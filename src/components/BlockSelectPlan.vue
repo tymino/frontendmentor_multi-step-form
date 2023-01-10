@@ -4,6 +4,7 @@
 
     <div class="content__options">
       <Options
+        class="content__options-item"
         :data="options"
         v-model:data="options"
         :getCostPlan="getCostPlan"
@@ -13,10 +14,6 @@
 
     <div class="content__toggle">
       <Toggle :data="toggle" v-model:data="toggle" />
-    </div>
-
-    <div class="content__button">
-      <Button @click="submit">next step</Button>
     </div>
   </div>
 </template>
@@ -28,7 +25,6 @@ import { useStore } from 'vuex';
 import Title from './UI/Title.vue';
 import Options from './UI/Options.vue';
 import Toggle from './UI/Toggle.vue';
-import Button from './UI/Button.vue';
 
 export default {
   name: 'block-select-plan',
@@ -36,7 +32,6 @@ export default {
     Title,
     Options,
     Toggle,
-    Button,
   },
   setup() {
     const store = useStore();
@@ -52,7 +47,6 @@ export default {
         get: () => store.state.blockSelectPlan.toggle,
         set: () => store.commit('setToggle'),
       }),
-      submit: () => store.commit('submitSelectPlan'),
     };
   },
 };
@@ -62,15 +56,15 @@ export default {
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 0 80px;
-  width: 100%;
 
   &__title {
     margin: 40px 0px;
   }
 
   &__options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin-bottom: 20px;
   }
 

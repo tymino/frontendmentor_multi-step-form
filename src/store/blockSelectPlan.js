@@ -40,9 +40,6 @@ const blockSelectPlan = {
         isSelected: option.name === name,
       }));
     },
-    submitSelectPlan() {
-      this.commit('setNextStep');
-    },
   },
 };
 

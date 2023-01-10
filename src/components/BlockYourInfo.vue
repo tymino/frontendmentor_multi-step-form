@@ -12,10 +12,6 @@
         v-on:blur="handleBlur"
       />
     </div>
-
-    <div class="content__button">
-      <Button @click="submit">next step</Button>
-    </div>
   </div>
 </template>
 
@@ -25,14 +21,12 @@ import { useStore } from 'vuex';
 
 import Title from './UI/Title.vue';
 import Input from './UI/Input.vue';
-import Button from './UI/Button.vue';
 
 export default {
   name: 'block-your-info',
   components: {
     Title,
     Input,
-    Button,
   },
   setup() {
     const store = useStore();
@@ -46,7 +40,6 @@ export default {
         },
       }),
       handleBlur: (inputName) => store.commit('handleBlur', inputName),
-      submit: () => store.commit('submitYourInfo'),
     };
   },
 };
@@ -57,11 +50,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0 80px;
-  width: 100%;
+  // width: 100%;
 
   &__title {
-    margin: 40px 0px;
+    margin-bottom: 40px;
   }
 
   &__form {

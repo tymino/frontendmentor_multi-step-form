@@ -64,18 +64,18 @@ const blockYourInfo = {
         target.error = true;
       }
     },
-    submitYourInfo(state) {
-      const inputs = state.inputs;
+    // submitYourInfo(state) {
+    //   const inputs = state.inputs;
 
-      for (const key in inputs) {
-        if (inputs[key].error || inputs[key].value === '') {
-          inputs[key].error = true;
-          return;
-        }
-      }
+    //   for (const key in inputs) {
+    //     if (inputs[key].error || inputs[key].value === '') {
+    //       inputs[key].error = true;
+    //       return;
+    //     }
+    //   }
 
-      this.commit('setNextStep');
-    },
+    //   this.commit('setNextStep');
+    // },
   },
 };
 

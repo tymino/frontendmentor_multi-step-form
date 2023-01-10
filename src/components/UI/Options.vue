@@ -58,6 +58,7 @@ export default {
   justify-content: space-between;
 
   &__option {
+    max-width: 144px;
     padding: 20px;
     border: 1px solid var(--color-light-gray);
     border-radius: var(--border-radius);

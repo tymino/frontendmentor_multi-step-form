@@ -7,16 +7,18 @@ import blockPickAddons from '@/store/blockPickAddons';
 const store = createStore({
   state: () => ({
     // formData: {
+    currentStep: 1,
     steps: [
-      { id: 1, subtitle: 'step', title: 'your info', isActive: false },
+      { id: 1, subtitle: 'step', title: 'your info', isActive: true },
       { id: 2, subtitle: 'step', title: 'select plan', isActive: false },
-      { id: 3, subtitle: 'step', title: 'add-ons', isActive: true },
+      { id: 3, subtitle: 'step', title: 'add-ons', isActive: false },
       { id: 4, subtitle: 'step', title: 'summary', isActive: false },
     ],
+    isTheEnd: false,
   }),
   getters: {
-    currentStep(state) {
-      return state.steps.find((step) => step.isActive === true).id;
+    getSubscriptionDuration() {
+      console.log('getSubscriptionDuration');
     },
     getCostPlan:
       (state) =>
@@ -31,17 +33,23 @@ const store = createStore({
       },
   },
   mutations: {
-    setNextStep(state) {
-      let currentStepValue = state.steps.find(
-        (step) => step.isActive === true
-      ).id;
-      const nextStepValue =
-        currentStepValue === state.steps.length ? 1 : ++currentStepValue;
+    setStep(state, direction) {
+      const stepDirection = direction === 'next' ? 1 : -1;
+
+      let newStepValue = state.currentStep + stepDirection;
+
+      if (newStepValue > state.steps.length) {
+        newStepValue = 1;
+      } else if (newStepValue < 1) {
+        newStepValue = state.steps.length;
+      }
 
       state.steps = state.steps.map((step) => ({
         ...step,
-        isActive: step.id === nextStepValue,
+        isActive: step.id === newStepValue,
       }));
+
+      state.currentStep = newStepValue;
     },
   },
   modules: {

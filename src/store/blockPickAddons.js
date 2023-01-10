@@ -38,9 +38,6 @@ const blockPickAddons = {
         return checkbox;
       });
     },
-    submitPickAddons() {
-      this.commit('setNextStep');
-    },
   },
 };
 
