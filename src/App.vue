@@ -9,17 +9,17 @@
         <BlockYourInfo v-if="currentStep === 1" />
         <BlockSelectPlan v-else-if="currentStep === 2" />
         <BlockPickAddons v-else-if="currentStep === 3" />
-        <!-- <BlockPickAddons v-else-if="currentStep === 4" /> -->
+        <BlockSummary v-else-if="currentStep === 4" />
 
         <div class="form__buttons">
-          <Button btnType="link" @click="setNextStep('back')">go back</Button>
+          <Button btnType="link" @click="setPrevStep">go back</Button>
           <Button
             v-if="currentStep === 4"
             btnType="confirm"
-            @click="setNextStep('next')"
+            @click="setNextStep"
             >confirm</Button
           >
-          <Button v-else btnType="primary" @click="setNextStep('next')"
+          <Button v-else btnType="primary" @click="setNextStep"
             >next step</Button
           >
         </div>
@@ -37,6 +37,7 @@ import Gratitude from './components/BlockGratitude.vue';
 import BlockYourInfo from './components/BlockYourInfo.vue';
 import BlockSelectPlan from './components/BlockSelectPlan.vue';
 import BlockPickAddons from './components/BlockPickAddons.vue';
+import BlockSummary from './components/BlockSummary.vue';
 import Button from './components/UI/Button.vue';
 
 export default {
@@ -47,6 +48,7 @@ export default {
     BlockYourInfo,
     BlockSelectPlan,
     BlockPickAddons,
+    BlockSummary,
     Button,
   },
   setup() {
@@ -56,7 +58,8 @@ export default {
       isVisibleGratitude: computed(() => store.state.isTheEnd),
       steps: computed(() => store.state.steps),
       currentStep: computed(() => store.state.currentStep),
-      setNextStep: (direction) => store.commit('setStep', direction),
+      setPrevStep: () => store.commit('setPrevStep'),
+      setNextStep: () => store.commit('setNextStep'),
     };
   },
 };
