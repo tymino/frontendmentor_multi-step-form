@@ -32,6 +32,15 @@ const store = createStore({
         stepNumber = 1;
       }
 
+      if (state.currentStep === 1) {
+        const hasError = state.blockYourInfo.hasError;
+
+        if (hasError) {
+          this.commit('checkErrorsOfInputs');
+          return;
+        }
+      }
+
       state.steps = state.steps.map((step) => ({
         ...step,
         isActive: step.id === stepNumber,

@@ -19,6 +19,7 @@ const blockYourInfo = {
       title: 'Personal info',
       subtitle: 'Please provide your name, email address and phone number.',
     },
+    hasError: true,
     inputs: {
       name: {
         id: 0,
@@ -54,6 +55,7 @@ const blockYourInfo = {
       const { inputName, value } = inputData;
       const target = state.inputs[inputName];
 
+      state.hasError = true;
       target.error = !target.validate(value);
       target.value = value;
     },
@@ -64,18 +66,19 @@ const blockYourInfo = {
         target.error = true;
       }
     },
-    // submitYourInfo(state) {
-    //   const inputs = state.inputs;
+    checkErrorsOfInputs(state) {
+      const inputs = state.inputs;
 
-    //   for (const key in inputs) {
-    //     if (inputs[key].error || inputs[key].value === '') {
-    //       inputs[key].error = true;
-    //       return;
-    //     }
-    //   }
+      for (const key in inputs) {
+        if (inputs[key].error || inputs[key].value === '') {
+          inputs[key].error = true;
+          return;
+        }
+      }
 
-    //   this.commit('setNextStep');
-    // },
+      state.hasError = false;
+      this.commit('setNextStep');
+    },
   },
 };
 
