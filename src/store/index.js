@@ -13,24 +13,17 @@ const store = createStore({
       { id: 3, subtitle: 'step', title: 'add-ons', isActive: false },
       { id: 4, subtitle: 'step', title: 'summary', isActive: false },
     ],
-    currentStep: 1,
+    currentStep: 3,
     isTheEnd: false,
   }),
   getters: {
-    getSubscriptionDuration() {
-      console.log('getSubscriptionDuration');
-    },
-    getCostPlan:
-      (state) =>
-      (value, isBonus = false) => {
-        const currency = isBonus ? '+$' : '$';
-        const month = '/mo';
-        const year = '/yr';
+    getSubscriptionDuration(state) {
+      const isToggleChecked = state.blockSelectPlan.toggle.isChecked;
+      const monthly = 'monthly';
+      const yearly = 'yearly';
 
-        return state.blockSelectPlan.toggle.isChecked
-          ? currency + value * 10 + year
-          : currency + value + month;
-      },
+      return isToggleChecked ? yearly : monthly;
+    },
   },
   mutations: {
     setStep(state, direction) {

@@ -33,7 +33,7 @@ import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 import Aside from './components/Aside.vue';
-import Gratitude from './components/Gratitude.vue';
+import Gratitude from './components/BlockGratitude.vue';
 import BlockYourInfo from './components/BlockYourInfo.vue';
 import BlockSelectPlan from './components/BlockSelectPlan.vue';
 import BlockPickAddons from './components/BlockPickAddons.vue';

@@ -17,9 +17,12 @@
         {{ option.name }}
       </div>
       <div class="container__option-price">
-        {{ getCostPlan(option.price) }}
+        {{ option.price[subscriptionDuration] }}
       </div>
-      <div class="container__option-price-description" v-if="toggle">
+      <div
+        class="container__option-price-description"
+        v-if="subscriptionDuration !== 'monthly'"
+      >
         2 months free
       </div>
     </div>
@@ -34,12 +37,8 @@ export default {
       type: Object,
       required: true,
     },
-    toggle: {
-      type: Boolean,
-      default: false,
-    },
-    getCostPlan: {
-      type: Function,
+    subscriptionDuration: {
+      type: String,
       required: true,
     },
   },

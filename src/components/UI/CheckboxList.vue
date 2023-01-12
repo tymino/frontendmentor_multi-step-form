@@ -26,7 +26,7 @@
             {{ item.description }}
           </div>
         </div>
-        <div class="item__price">{{ getCostPlan(item.price) }}</div>
+        <div class="item__price">{{ item.price[subscriptionDuration] }}</div>
       </div>
     </div>
   </div>
@@ -40,12 +40,8 @@ export default {
       type: Object,
       required: true,
     },
-    toggle: {
-      type: Boolean,
-      default: false,
-    },
-    getCostPlan: {
-      type: Function,
+    subscriptionDuration: {
+      type: String,
       required: true,
     },
   },

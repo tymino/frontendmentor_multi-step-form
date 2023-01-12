@@ -6,8 +6,7 @@
       <CheckboxList
         :data="checkboxes"
         v-model:data="checkboxes"
-        :getCostPlan="getCostPlan"
-        :toggle="toggle.isChecked"
+        :subscriptionDuration="subscriptionDuration"
       />
     </div>
   </div>
@@ -35,11 +34,9 @@ export default {
         get: () => store.state.blockPickAddons.checkboxes,
         set: (name) => store.commit('setCheckboxes', name),
       }),
-      toggle: computed({
-        get: () => store.state.blockSelectPlan.toggle,
-        set: () => store.commit('setToggle'),
-      }),
-      getCostPlan: computed(() => store.getters.getCostPlan),
+      subscriptionDuration: computed(
+        () => store.getters.getSubscriptionDuration
+      ),
     };
   },
 };

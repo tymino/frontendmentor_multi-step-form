@@ -7,8 +7,7 @@
         class="content__options-item"
         :data="options"
         v-model:data="options"
-        :getCostPlan="getCostPlan"
-        :toggle="toggle.isChecked"
+        :subscriptionDuration="subscriptionDuration"
       />
     </div>
 
@@ -47,6 +46,9 @@ export default {
         get: () => store.state.blockSelectPlan.toggle,
         set: () => store.commit('setToggle'),
       }),
+      subscriptionDuration: computed(
+        () => store.getters.getSubscriptionDuration
+      ),
     };
   },
 };
@@ -65,14 +67,11 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 20px;
+    height: 208px;
   }
 
-  &__button {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 60px;
-    margin-bottom: 14px;
+  &__toggle {
+    margin-top: 30px;
   }
 }
 

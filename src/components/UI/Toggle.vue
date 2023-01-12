@@ -10,7 +10,11 @@
     </div>
     <div class="container__toggle toggle">
       <label class="toggle">
-        <input type="checkbox" :value="data.isChecked" @input="updateToggle" />
+        <input
+          type="checkbox"
+          :checked="data.isChecked"
+          @input="updateToggle"
+        />
         <span class="slider round"></span>
       </label>
     </div>
