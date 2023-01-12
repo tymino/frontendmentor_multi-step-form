@@ -11,12 +11,14 @@
         <BlockPickAddons v-else-if="currentStep === 3" />
         <BlockSummary v-else-if="currentStep === 4" />
 
-        <div class="form__buttons">
-          <Button btnType="link" @click="setPrevStep">go back</Button>
-          <Button
-            v-if="currentStep === 4"
-            btnType="confirm"
-            @click="setNextStep"
+        <div
+          class="form__buttons"
+          :class="{ 'form__buttons--end': currentStep === 1 }"
+        >
+          <Button v-if="currentStep !== 1" btnType="link" @click="setPrevStep"
+            >go back</Button
+          >
+          <Button v-if="currentStep === 4" btnType="confirm" @click="setConfirm"
             >confirm</Button
           >
           <Button v-else btnType="primary" @click="setNextStep"
@@ -60,6 +62,7 @@ export default {
       currentStep: computed(() => store.state.currentStep),
       setPrevStep: () => store.commit('setPrevStep'),
       setNextStep: () => store.commit('setNextStep'),
+      setConfirm: () => store.commit('setConfirm'),
     };
   },
 };
@@ -92,12 +95,13 @@ export default {
   padding: 40px 90px 20px;
   width: 100%;
 
-  // &__content {
-  // }
-
   &__buttons {
     display: flex;
     justify-content: space-between;
+
+    &--end {
+      justify-content: flex-end;
+    }
   }
 }
 

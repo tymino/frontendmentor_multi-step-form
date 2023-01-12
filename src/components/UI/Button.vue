@@ -51,6 +51,7 @@ export default {
   &--link {
     background: none;
     color: var(--color-cool-gray);
+    padding: 12px 0px;
 
     &:hover {
       color: var(--color-marine-blue);

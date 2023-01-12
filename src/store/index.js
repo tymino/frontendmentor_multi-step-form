@@ -28,10 +28,8 @@ const store = createStore({
   },
   mutations: {
     updateSteps(state, stepNumber) {
-      if (stepNumber > state.steps.length) {
+      if (stepNumber > state.steps.length || stepNumber < 1) {
         stepNumber = 1;
-      } else if (stepNumber < 1) {
-        stepNumber = state.steps.length;
       }
 
       state.steps = state.steps.map((step) => ({
@@ -49,6 +47,9 @@ const store = createStore({
     },
     setStep(state, stepNumber) {
       this.commit('updateSteps', stepNumber);
+    },
+    setConfirm(state) {
+      state.isTheEnd = true;
     },
   },
   modules: {

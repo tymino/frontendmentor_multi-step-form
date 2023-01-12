@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <Title class="content__title" :data="header"></Title>
+    <Title class="content__title" :data="header" />
 
     <div class="content__options">
       <Options
