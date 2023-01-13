@@ -15,7 +15,7 @@ const store = createStore({
       { id: 4, subtitle: 'step', title: 'summary', isActive: false },
     ],
     currentStep: 1,
-    isTheEnd: false,
+    isTheEnd: true,
   }),
   getters: {
     getSubscriptionDuration(state) {
