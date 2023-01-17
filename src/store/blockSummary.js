@@ -5,11 +5,6 @@ const blockSummary = {
       subtitle: 'Double-check everything looks OK before confirming.',
     },
   }),
-  getters: {
-    getTotalInfo() {
-      return { value: 'test1' };
-    },
-  },
   mutations: {
     returnStepTwo() {
       this.commit('setStep', 2);

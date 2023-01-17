@@ -39,6 +39,24 @@ const blockSelectPlan = {
       isChecked: false,
     },
   }),
+  getters: {
+    getStateToggle(state) {
+      const isToggleChecked = state.toggle.isChecked;
+      const monthly = state.toggle.titleLeft;
+      const yearly = state.toggle.titleRight;
+
+      return isToggleChecked ? yearly : monthly;
+    },
+    getCurrentPlan(state, getters) {
+      const option = state.options.find(({ isSelected }) => isSelected);
+
+      return {
+        name: option.name,
+        duration: getters.getStateToggle,
+        price: option.price[getters.getStateToggle],
+      };
+    },
+  },
   mutations: {
     setToggle(state) {
       state.toggle.isChecked = !state.toggle.isChecked;
