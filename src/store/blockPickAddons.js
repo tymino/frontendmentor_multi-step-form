@@ -34,6 +34,20 @@ const blockPickAddons = {
       },
     ],
   }),
+  getters: {
+    getAddons(state, getters) {
+      return state.checkboxes.reduce((acc, checkbox) => {
+        if (checkbox.isSelected) {
+          acc.push({
+            name: checkbox.name,
+            price: checkbox.price[getters.getStateToggle],
+          });
+        }
+
+        return acc;
+      }, []);
+    },
+  },
   mutations: {
     setCheckboxes(state, name) {
       state.checkboxes = state.checkboxes.map((checkbox) => {

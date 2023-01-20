@@ -22,9 +22,9 @@ const store = createStore({
       return getters.getStateToggle;
     },
     getTotalInfo(state, getters) {
-      console.log(getters.getSubscriptionDuration);
       return {
         plan: getters.getCurrentPlan,
+        addons: getters.getAddons,
       };
     },
   },
