@@ -10,8 +10,8 @@ const blockPickAddons = {
         description: 'Access to multiplayer games',
         isSelected: true,
         price: {
-          monthly: '+$1/mo',
-          yearly: '+$10/yr',
+          monthly: 1,
+          yearly: 10,
         },
       },
       {
@@ -19,8 +19,8 @@ const blockPickAddons = {
         description: 'Extra 1TB of cloud save',
         isSelected: true,
         price: {
-          monthly: '+$2/mo',
-          yearly: '+$20/yr',
+          monthly: 2,
+          yearly: 20,
         },
       },
       {
@@ -28,8 +28,8 @@ const blockPickAddons = {
         description: 'Custom theme on your profile',
         isSelected: false,
         price: {
-          monthly: '+$2/mo',
-          yearly: '+$20/yr',
+          monthly: 2,
+          yearly: 20,
         },
       },
     ],

@@ -18,13 +18,32 @@ const store = createStore({
     isTheEnd: false,
   }),
   getters: {
+    priceWrap(state, getters) {
+      const monthly = 'mo';
+      const yearly = 'yr';
+      const price = getters.getStateToggle === 'monthly' ? monthly : yearly;
+
+      return (value) => `$${value}/${price}`;
+    },
     getSubscriptionDuration(state, getters) {
       return getters.getStateToggle;
     },
     getTotalInfo(state, getters) {
+      const plan = getters.getCurrentPlan;
+      const addons = getters.getAddons;
+
+      const priceAddons = getters.getAddons.reduce(
+        (acc, cur) => acc + cur.price,
+        0
+      );
+
       return {
-        plan: getters.getCurrentPlan,
-        addons: getters.getAddons,
+        plan,
+        addons,
+        total: {
+          perValue: getters.getStateToggle.slice(0, -2),
+          price: getters.priceWrap(plan.price + priceAddons),
+        },
       };
     },
   },

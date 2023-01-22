@@ -10,8 +10,8 @@ const blockSelectPlan = {
         isSelected: true,
         icon: 'icon-arcade.svg',
         price: {
-          monthly: '$9/mo',
-          yearly: '$90/yr',
+          monthly: 9,
+          yearly: 90,
         },
       },
       {
@@ -19,8 +19,8 @@ const blockSelectPlan = {
         isSelected: false,
         icon: 'icon-advanced.svg',
         price: {
-          monthly: '$12/mo',
-          yearly: '$120/yr',
+          monthly: 12,
+          yearly: 120,
         },
       },
       {
@@ -28,8 +28,8 @@ const blockSelectPlan = {
         isSelected: false,
         icon: 'icon-pro.svg',
         price: {
-          monthly: '$15/mo',
-          yearly: '$150/yr',
+          monthly: 15,
+          yearly: 150,
         },
       },
     ],
