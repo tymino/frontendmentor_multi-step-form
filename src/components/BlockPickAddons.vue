@@ -7,6 +7,7 @@
         :data="checkboxes"
         v-model:data="checkboxes"
         :subscriptionDuration="subscriptionDuration"
+        :priceWrap="priceWrap"
       />
     </div>
   </div>
@@ -37,6 +38,7 @@ export default {
       subscriptionDuration: computed(
         () => store.getters.getSubscriptionDuration
       ),
+      priceWrap: computed(() => store.getters.priceWrap),
     };
   },
 };

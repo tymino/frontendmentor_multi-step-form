@@ -26,7 +26,9 @@
             {{ item.description }}
           </div>
         </div>
-        <div class="item__price">{{ item.price[subscriptionDuration] }}</div>
+        <div class="item__price">
+          {{ priceWrap(item.price[subscriptionDuration]) }}
+        </div>
       </div>
     </div>
   </div>
@@ -42,6 +44,10 @@ export default {
     },
     subscriptionDuration: {
       type: String,
+      required: true,
+    },
+    priceWrap: {
+      type: Function,
       required: true,
     },
   },

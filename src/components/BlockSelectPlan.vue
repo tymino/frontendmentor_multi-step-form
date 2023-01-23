@@ -8,6 +8,7 @@
         :data="options"
         v-model:data="options"
         :subscriptionDuration="subscriptionDuration"
+        :priceWrap="priceWrap"
       />
     </div>
 
@@ -49,6 +50,7 @@ export default {
       subscriptionDuration: computed(
         () => store.getters.getSubscriptionDuration
       ),
+      priceWrap: computed(() => store.getters.priceWrap),
     };
   },
 };

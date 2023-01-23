@@ -17,7 +17,7 @@
         {{ option.name }}
       </div>
       <div class="container__option-price">
-        {{ option.price[subscriptionDuration] }}
+        {{ priceWrap(option.price[subscriptionDuration]) }}
       </div>
       <div
         class="container__option-price-description"
@@ -39,6 +39,10 @@ export default {
     },
     subscriptionDuration: {
       type: String,
+      required: true,
+    },
+    priceWrap: {
+      type: Function,
       required: true,
     },
   },
