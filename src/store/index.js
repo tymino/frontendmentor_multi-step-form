@@ -14,7 +14,7 @@ const store = createStore({
       { id: 3, subtitle: 'step', title: 'add-ons', isActive: false },
       { id: 4, subtitle: 'step', title: 'summary', isActive: false },
     ],
-    currentStep: 2,
+    currentStep: 4,
     isTheEnd: false,
   }),
   getters: {
@@ -37,14 +37,16 @@ const store = createStore({
         0
       );
 
-      return {
+      const total = {
         plan,
         addons,
         total: {
           perValue: getters.getStateToggle.slice(0, -2),
-          price: getters.priceWrap(plan.price + priceAddons),
+          price: plan.price + priceAddons,
         },
       };
+
+      return total;
     },
   },
   mutations: {

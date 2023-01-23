@@ -6,27 +6,41 @@
       <div class="body__row row">
         <div class="row__plan-wrapper">
           <div class="row__plan-description">
-            <div class="row__plan-name">{{ getTotalInfo }}</div>
-            <div class="row__plan-duration"></div>
+            <div class="row__plan-name">
+              {{ getTotalInfo.plan.name }}
+            </div>
+            <div class="row__plan-duration">
+              ({{ getTotalInfo.plan.duration }})
+            </div>
           </div>
           <Button class="row__plan-button" @click="returnStepTwo" btnType="link"
             >change</Button
           >
         </div>
-        <div class="row__plan-price"></div>
+        <div class="row__plan-price">
+          {{ priceWrap(getTotalInfo.plan.price) }}
+        </div>
       </div>
 
       <div class="body__row row">
-        <div class="row__addons">
-          <div class="row__addons-name"></div>
-          <div class="row__addons-price"></div>
+        <div
+          class="row__addons"
+          v-for="addon in getTotalInfo.addons"
+          :key="addon.name"
+        >
+          <div class="row__addons-name">{{ addon.name }}</div>
+          <div class="row__addons-price">{{ priceWrap(addon.price) }}</div>
         </div>
       </div>
 
       <div class="body__row row">
         <div class="row__total">
-          <div class="row__total-name"></div>
-          <div class="row__total-price"></div>
+          <div class="row__total-name">
+            Total (per {{ getTotalInfo.total.perValue }})
+          </div>
+          <div class="row__total-price">
+            {{ priceWrap(getTotalInfo.total.price) }}
+          </div>
         </div>
       </div>
     </div>
@@ -56,6 +70,7 @@ export default {
         () => store.getters.getSubscriptionDuration
       ),
       returnStepTwo: () => store.commit('returnStepTwo'),
+      priceWrap: computed(() => store.getters.priceWrap),
     };
   },
 };
