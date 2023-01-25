@@ -1,35 +1,41 @@
 <template>
-  <div class="content">
-    <Title class="content__title" :data="header" />
+  <div>
+    <Title :data="header" />
 
-    <div class="content__body body">
-      <div class="body__row row">
-        <div class="row__plan-wrapper">
-          <div class="row__plan-description">
-            <div class="row__plan-name">
-              {{ getTotalInfo.plan.name }}
+    <div class="body">
+      <div class="body__background">
+        <div class="body__row">
+          <div class="row row__plan">
+            <div class="row__plan-wrapper">
+              <div class="row__plan-description">
+                <span class="row__plan-description-name">
+                  {{ getTotalInfo.plan.name }}
+                </span>
+                <span class="row__plan-description-duration">
+                  ({{ getTotalInfo.plan.duration }})
+                </span>
+              </div>
+              <Button
+                class="row__plan-button"
+                @click="returnStepTwo"
+                btnType="link"
+                >change</Button
+              >
             </div>
-            <div class="row__plan-duration">
-              ({{ getTotalInfo.plan.duration }})
+            <div class="row__plan-price">
+              {{ priceWrap(getTotalInfo.plan.price) }}
             </div>
           </div>
-          <Button class="row__plan-button" @click="returnStepTwo" btnType="link"
-            >change</Button
+        </div>
+        <div class="body__row row">
+          <div
+            class="row__addon"
+            v-for="addon in getTotalInfo.addons"
+            :key="addon.name"
           >
-        </div>
-        <div class="row__plan-price">
-          {{ priceWrap(getTotalInfo.plan.price) }}
-        </div>
-      </div>
-
-      <div class="body__row row">
-        <div
-          class="row__addons"
-          v-for="addon in getTotalInfo.addons"
-          :key="addon.name"
-        >
-          <div class="row__addons-name">{{ addon.name }}</div>
-          <div class="row__addons-price">{{ priceWrap(addon.price) }}</div>
+            <div class="row__addon-name">{{ addon.name }}</div>
+            <div class="row__addon-price">{{ priceWrap(addon.price) }}</div>
+          </div>
         </div>
       </div>
 
@@ -76,4 +82,61 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.body {
+  margin-top: 40px;
+
+  &__background {
+    background: var(--color-alabaster);
+    border-radius: var(--border-radius);
+  }
+
+  &__row {
+    position: relative;
+  }
+}
+.row {
+  margin: 0 24px;
+  padding: 24px 0;
+}
+.row__plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-light-gray);
+
+  &-description {
+    display: flex;
+    color: var(--color-marine-blue);
+    font-size: 1.1rem;
+    font-weight: var(--font-medium);
+
+    &-name {
+      margin-right: 6px;
+      text-transform: capitalize;
+    }
+    &-duration {
+      text-transform: capitalize;
+    }
+  }
+
+  &-button {
+    margin-top: 6px;
+    border-bottom: 2px solid var(--color-cool-gray);
+    border-radius: 0;
+    font-size: 0.9rem;
+    font-weight: var(--font-light);
+  }
+
+  &-price {
+    color: var(--color-marine-blue);
+    font-size: 1.1rem;
+    font-weight: var(--font-medium);
+  }
+}
+
+.row__total {
+  background: none;
+}
+</style>
