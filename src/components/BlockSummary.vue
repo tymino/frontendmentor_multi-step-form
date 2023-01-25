@@ -34,7 +34,7 @@
             :key="addon.name"
           >
             <div class="row__addon-name">{{ addon.name }}</div>
-            <div class="row__addon-price">{{ priceWrap(addon.price) }}</div>
+            <div class="row__addon-price">+{{ priceWrap(addon.price) }}</div>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
             Total (per {{ getTotalInfo.total.perValue }})
           </div>
           <div class="row__total-price">
-            {{ priceWrap(getTotalInfo.total.price) }}
+            +{{ priceWrap(getTotalInfo.total.price) }}
           </div>
         </div>
       </div>
@@ -136,7 +136,39 @@ export default {
   }
 }
 
+.row__addon {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: var(--font-light);
+
+  &-name {
+    color: var(--color-cool-gray);
+  }
+
+  &-price {
+    color: var(--color-marine-blue);
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
 .row__total {
-  background: none;
+  display: flex;
+  justify-content: space-between;
+
+  &-name {
+    color: var(--color-cool-gray);
+    font-size: 1rem;
+    font-weight: var(--font-light);
+  }
+
+  &-price {
+    color: var(--color-purplish-blue);
+    font-size: 1.2rem;
+    font-weight: var(--font-bold);
+  }
 }
 </style>
