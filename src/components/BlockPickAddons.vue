@@ -57,15 +57,18 @@ export default {
   &__options {
     margin-bottom: 20px;
   }
-
-  &__button {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 60px;
-    margin-bottom: 14px;
-  }
 }
 
 @media (max-width: 1000px) {
+  .content {
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    margin: 0 14px;
+    padding: 20px;
+
+    &__title {
+      margin-bottom: 20px;
+    }
+  }
 }
 </style>

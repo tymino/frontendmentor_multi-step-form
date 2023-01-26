@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="item__price">
-          {{ priceWrap(item.price[subscriptionDuration]) }}
+          +{{ priceWrap(item.price[subscriptionDuration]) }}
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@ export default {
 
 .item {
   display: flex;
-  padding: 20px;
+  padding: 14px;
   align-items: center;
   border: 1px solid var(--color-light-gray);
   border-radius: var(--border-radius);
@@ -139,5 +139,36 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+@media (max-width: 1000px) {
+  .checkbox-list {
+    &__item {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .item {
+    &__wrapper {
+      margin-left: 14px;
+    }
+
+    &__text {
+      &-title {
+        margin-bottom: 4px;
+        font-size: 1rem;
+      }
+
+      &-description {
+        font-size: 0.9rem;
+      }
+    }
+
+    &__price {
+      font-size: 0.9rem;
+    }
+  }
 }
 </style>
