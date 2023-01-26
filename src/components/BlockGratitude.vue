@@ -43,4 +43,13 @@ export default {
     line-height: 1.5rem;
   }
 }
+
+@media (max-width: 1000px) {
+  .gratitude {
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    margin: 0 14px;
+    padding: 80px 20px;
+  }
+}
 </style>

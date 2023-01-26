@@ -7,14 +7,13 @@ import blockSummary from '@/store/blockSummary';
 
 const store = createStore({
   state: () => ({
-    // formData: {
     steps: [
       { id: 1, subtitle: 'step', title: 'your info', isActive: true },
       { id: 2, subtitle: 'step', title: 'select plan', isActive: false },
       { id: 3, subtitle: 'step', title: 'add-ons', isActive: false },
       { id: 4, subtitle: 'step', title: 'summary', isActive: false },
     ],
-    currentStep: 4,
+    currentStep: 1,
     isTheEnd: false,
   }),
   getters: {

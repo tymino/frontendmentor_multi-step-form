@@ -64,7 +64,7 @@ export default {
 
   &__option {
     max-width: 144px;
-    padding: 14px;
+    padding: 20px;
     border: 1px solid var(--color-light-gray);
     border-radius: var(--border-radius);
 
@@ -110,6 +110,7 @@ export default {
       display: flex;
       max-width: 100%;
       margin-bottom: 10px;
+      padding: 14px;
 
       &-icon {
         width: 42px;
