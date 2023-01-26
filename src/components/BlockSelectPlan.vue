@@ -78,5 +78,26 @@ export default {
 }
 
 @media (max-width: 1000px) {
+  .content {
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    margin: 0 14px;
+    padding: 20px;
+
+    &__title {
+      margin-bottom: 20px;
+    }
+
+    &__options {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    &__toggle {
+      margin-top: 20px;
+    }
+  }
 }
 </style>

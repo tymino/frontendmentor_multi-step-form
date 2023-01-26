@@ -60,22 +60,10 @@ export default {
       margin-bottom: 30px;
     }
   }
-
-  &__button {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 60px;
-    margin-bottom: 14px;
-  }
 }
 
 @media (max-width: 1000px) {
   .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    padding-right: 0px;
     border-radius: var(--border-radius);
 
     &__title {
@@ -93,11 +81,6 @@ export default {
       &-item {
         margin-bottom: 30px;
       }
-    }
-
-    &__button {
-      padding: 10px 14px;
-      background: var(--color-white);
     }
   }
 }

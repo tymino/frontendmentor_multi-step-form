@@ -94,7 +94,6 @@ export default {
   justify-content: space-between;
   padding: 40px 90px 20px;
   width: 100%;
-  height: 100%;
 
   &__buttons {
     display: flex;
@@ -119,6 +118,7 @@ export default {
 
   .form {
     padding: 0px;
+    height: 100%;
 
     &__buttons {
       padding: 14px;

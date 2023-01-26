@@ -14,7 +14,7 @@ const store = createStore({
       { id: 3, subtitle: 'step', title: 'add-ons', isActive: false },
       { id: 4, subtitle: 'step', title: 'summary', isActive: false },
     ],
-    currentStep: 1,
+    currentStep: 2,
     isTheEnd: false,
   }),
   getters: {

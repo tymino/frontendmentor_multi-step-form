@@ -13,17 +13,19 @@
         :src="require(`@/assets/images/${option.icon}`)"
         :alt="option.name"
       />
-      <div class="container__option-name">
-        {{ option.name }}
-      </div>
-      <div class="container__option-price">
-        {{ priceWrap(option.price[subscriptionDuration]) }}
-      </div>
-      <div
-        class="container__option-price-description"
-        v-if="subscriptionDuration !== 'monthly'"
-      >
-        2 months free
+      <div class="container__option-desc">
+        <div class="container__option-name">
+          {{ option.name }}
+        </div>
+        <div class="container__option-price">
+          {{ priceWrap(option.price[subscriptionDuration]) }}
+        </div>
+        <div
+          class="container__option-price-description"
+          v-if="subscriptionDuration !== 'monthly'"
+        >
+          2 months free
+        </div>
       </div>
     </div>
   </div>
@@ -62,7 +64,7 @@ export default {
 
   &__option {
     max-width: 144px;
-    padding: 20px;
+    padding: 14px;
     border: 1px solid var(--color-light-gray);
     border-radius: var(--border-radius);
 
@@ -95,6 +97,38 @@ export default {
         color: var(--color-marine-blue);
         font-size: 0.9rem;
         font-weight: var(--font-light);
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+
+    &__option {
+      display: flex;
+      max-width: 100%;
+      margin-bottom: 10px;
+
+      &-icon {
+        width: 42px;
+        height: 42px;
+        margin: 0 14px 0px 0;
+      }
+
+      &-name {
+        margin-bottom: 4px;
+        font-size: 1rem;
+      }
+
+      &-price {
+        font-size: 0.9rem;
+
+        &-description {
+          margin-top: 8px;
+          font-size: 0.8rem;
+        }
       }
     }
   }

@@ -125,4 +125,7 @@ input {
     transform: translateX(24px);
   }
 }
+
+@media (max-width: 1000px) {
+}
 </style>
