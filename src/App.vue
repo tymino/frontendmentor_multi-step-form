@@ -94,6 +94,7 @@ export default {
   justify-content: space-between;
   padding: 40px 90px 20px;
   width: 100%;
+  height: 100%;
 
   &__buttons {
     display: flex;
@@ -110,9 +111,19 @@ export default {
     flex-direction: column;
     align-items: center;
     max-width: 375px;
+    height: 695px;
     padding: 0;
     background: var(--color-magnolia);
     z-index: 2;
+  }
+
+  .form {
+    padding: 0px;
+
+    &__buttons {
+      padding: 14px;
+      background: var(--color-white);
+    }
   }
 }
 </style>

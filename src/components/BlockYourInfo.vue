@@ -74,6 +74,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%;
     padding-right: 0px;
     border-radius: var(--border-radius);
 
