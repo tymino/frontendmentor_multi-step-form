@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <Title :data="header" />
 
     <div class="body">
@@ -169,6 +169,15 @@ export default {
     color: var(--color-purplish-blue);
     font-size: 1.2rem;
     font-weight: var(--font-bold);
+  }
+}
+
+@media (max-width: 1000px) {
+  .content {
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    margin: 0 14px;
+    padding: 20px;
   }
 }
 </style>
