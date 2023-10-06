@@ -42,7 +42,7 @@ const blockYourInfo = {
       'phone number': {
         id: 2,
         name: 'phone number',
-        placeholder: 'e.g. +1 234 567 890',
+        placeholder: 'e.g. 1234567890',
         value: '',
         validate: validatePhoneNumber,
         error: false,
